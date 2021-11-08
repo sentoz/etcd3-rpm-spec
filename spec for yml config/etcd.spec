@@ -9,7 +9,7 @@ License:	ASL 2.0
 URL:		https://github.com/etcd-io/etcd/
 Source0:	https://github.com/etcd-io/%{name}/releases/download/v%{version}/%{name}-v%{version}-linux-amd64.tar.gz
 Source1:	%{name}.service
-Source2:	%{name}.conf
+Source2:	%{name}.yml
 
 %description
 A highly-available key value store for shared configuration.
@@ -60,12 +60,15 @@ esac
  
 %files
 %dir %attr(-, %{name}, %{name}) %{_sysconfdir}/%{name}
-%attr(-, %{name}, %{name}) %{_sysconfdir}/%{name}/%{name}.conf
-%config(noreplace) %attr(755, %{name}, %{name}) %{_bindir}/%{name}
-%config(noreplace) %attr(755, %{name}, %{name}) %{_bindir}/%{name}ctl
+%config(noreplace) %attr(-, %{name}, %{name}) %{_sysconfdir}/%{name}/%{name}.yml
+%attr(755, %{name}, %{name}) %{_bindir}/%{name}
+%attr(755, %{name}, %{name}) %{_bindir}/%{name}ctl
 %attr(644, root, root) %{_unitdir}/%{name}.service
 
  
 %changelog
+* Mon Nov 08 2021 Dmitriy Okladin <random66@gmail.com> - 3.4.18
+- fix config(noreplace) with binary
+
 * Thu Oct 23 2021 Dmitriy Okladin <random66@gmail.com> - 3.4.18
 - initial build 3.4.18

@@ -7,7 +7,7 @@ After=network.target
 User=etcd
 Type=notify
 Environment=ETCD_DATA_DIR=/var/lib/etcd
-Environment=ETCD_CONFIG_FILE=/etc/etcd/etcd.conf
+Environment=ETCD_CONFIG_FILE=/etc/etcd/etcd.yml
 ExecStart=/usr/bin/etcd
 Restart=on-failure
 RestartSec=10s
