@@ -1,10 +1,10 @@
 # This is the configuration file for the etcd server.
 
 # Human-readable name for this member.
-name: 'default'
+name: default
 
 # Path to the data directory.
-data-dir:
+data-dir: /var/lib/etcd/etcd-cluster
 
 # Path to the dedicated wal directory.
 wal-dir:
@@ -49,7 +49,7 @@ advertise-client-urls: http://localhost:2379
 discovery:
 
 # Valid values include 'exit', 'proxy'
-discovery-fallback: 'proxy'
+discovery-fallback: proxy
 
 # HTTP proxy to use for traffic to discovery service.
 discovery-proxy:
@@ -61,10 +61,10 @@ discovery-srv:
 initial-cluster:
 
 # Initial cluster token for the etcd cluster during bootstrap.
-initial-cluster-token: 'etcd-cluster'
+initial-cluster-token: etcd-cluster
 
 # Initial cluster state ('new' or 'existing').
-initial-cluster-state: 'new'
+initial-cluster-state: new
 
 # Reject reconfiguration requests that would cause quorum loss.
 strict-reconfig-check: false
@@ -125,8 +125,11 @@ peer-transport-security:
   # Peer TLS using generated certificates.
   auto-tls: false
 
+# The validity period of the self-signed certificate, the unit is year.
+self-signed-cert-validity: 1
+
 # Enable debug-level logging for etcd.
-debug: false
+log-level: debug
 
 logger: zap
 
