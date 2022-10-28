@@ -67,12 +67,12 @@ esac
 %config(noreplace) %attr(644, root, root) %{_sysconfdir}/%{name}/%{name}.yml
 
 %changelog
-* Sat Mar 13 2022 Dmitriy Okladin <random66@gmail.com> - 3.5.1
+* Sat Mar 13 2022 Dmitriy Okladin <sentoz66@gmail.com> - 3.5.1
 - update to 3.5.1
 - added etcdutl util
 
-* Mon Nov 08 2021 Dmitriy Okladin <random66@gmail.com> - 3.4.18
+* Mon Nov 08 2021 Dmitriy Okladin <sentoz66@gmail.com> - 3.4.18
 - fix config(noreplace) with binary
 
-* Thu Oct 23 2021 Dmitriy Okladin <random66@gmail.com> - 3.4.18
+* Thu Oct 23 2021 Dmitriy Okladin <sentoz66@gmail.com> - 3.4.18
 - initial build 3.4.18
