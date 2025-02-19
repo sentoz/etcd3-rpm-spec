@@ -34,7 +34,7 @@ jobs:
           id: rpm_build
           uses: naveenrajm7/rpmbuild@master
           with:
-              spec_file: "spec for yml config/etcd.spec"
+              spec_file: "spec_for_yml_config/etcd.spec"
 
         - name: Upload Release Asset
           id: upload-release-asset 
