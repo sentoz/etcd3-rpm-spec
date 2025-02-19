@@ -2,7 +2,7 @@
 %define debug_package %{nil}
 
 Name:    etcd
-Version: 3.5.1
+Version: 3.5.18
 Release: 1%{?dist}
 Summary: A highly-available key value store for shared configuration
 License: ASL 2.0
@@ -67,6 +67,9 @@ esac
 %config(noreplace) %attr(644, root, root) %{_sysconfdir}/%{name}/%{name}.conf
 
 %changelog
+* Wed Feb 19 2025 Dmitriy Okladin <sentoz66@gmail.com> - 3.5.18
+- update to 3.5.18
+
 * Sat Mar 13 2022 Dmitriy Okladin <sentoz66@gmail.com> - 3.5.1
 - update to 3.5.1
 - added etcdutl util
