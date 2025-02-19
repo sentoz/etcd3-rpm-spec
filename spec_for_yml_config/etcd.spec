@@ -70,7 +70,7 @@ esac
 * Wed Feb 19 2025 Dmitriy Okladin <sentoz66@gmail.com> - 3.5.18
 - update to 3.5.18
 
-* Sat Mar 13 2022 Dmitriy Okladin <sentoz66@gmail.com> - 3.5.1
+* Sun Mar 13 2022 Dmitriy Okladin <sentoz66@gmail.com> - 3.5.1
 - update to 3.5.1
 - added etcdutl util
 
