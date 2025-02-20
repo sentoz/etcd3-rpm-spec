@@ -15,6 +15,12 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@master
 
+        - name: build RPM package
+          id: rpm_build
+          uses: AnjaloHettiarachchi/rpmbuild@v1.0.0
+          with:
+              spec_file: "spec_for_yml_config/etcd.spec"
+
         - name: Create Release
           id: create_release
           uses: actions/create-release@latest
@@ -30,19 +36,24 @@ jobs:
               draft: false
               prerelease: false
             
-        - name: build RPM package
-          id: rpm_build
-          uses: naveenrajm7/rpmbuild@master
-          with:
-              spec_file: "spec_for_yml_config/etcd.spec"
-
-        - name: Upload Release Asset
-          id: upload-release-asset 
+        - name: Upload RPM as a release asset
+          id: upload_rpm_release
           uses: actions/upload-release-asset@v1
           env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-              upload_url: ${{ steps.create_release.outputs.upload_url }}
-              asset_path: ${{ steps.rpm_build.outputs.source_rpm_path }}
-              asset_name: ${{ steps.rpm_build.outputs.source_rpm_name }}
-              asset_content_type: ${{ steps.rpm_build.outputs.rpm_content_type }}
+            upload_url: ${{ steps.create_release.outputs.upload_url }}
+            asset_path: ${{ steps.rpm_build.outputs.rpm_path }}
+            asset_name: ${{ steps.rpm_build.outputs.rpm_name }}
+            asset_content_type: ${{ steps.rpm_build.outputs.content_type }}
+
+        - name: Upload SRPM as a release asset
+          id: upload_srpm_release
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ steps.create_release.outputs.upload_url }}
+            asset_path: ${{ steps.rpm_build.outputs.srpm_path }}
+            asset_name: ${{ steps.rpm_build.outputs.srpm_name }}
+            asset_content_type: ${{ steps.rpm_build.outputs.content_type }}
